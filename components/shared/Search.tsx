@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 import { Input } from "@/components/ui/input";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib/utils";
-import { log } from "console";
 
 export const Search = () => {
   const router = useRouter();
