@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation"
 import { Button } from "../ui/button"
 
 const MobileNav = () => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
     <header className="header">
@@ -17,8 +17,8 @@ const MobileNav = () => {
         <Image
           src="/assets/images/logo-text.svg"
           alt="logo"
-          width={180}
-          height={28}
+          width={50}
+          height={50}
         />
       </Link>
 
@@ -28,7 +28,7 @@ const MobileNav = () => {
 
           <Sheet>
             <SheetTrigger>
-              <Image 
+              <Image
                 src="/assets/icons/menu.svg"
                 alt="menu"
                 width={32}
@@ -38,45 +38,50 @@ const MobileNav = () => {
             </SheetTrigger>
             <SheetContent className="sheet-content sm:w-64">
               <>
-                <Image 
+                <Image
                   src="/assets/images/logo-text.svg"
                   alt="logo"
-                  width={152}
-                  height={23}
+                  width={40}
+                  height={40}
                 />
 
-              <ul className="header-nav_elements">
-              {navLinks.map((link) => {
-                const isActive = link.route === pathname
+                <ul className="header-nav_elements">
+                  {navLinks.map((link) => {
+                    const isActive = link.route === pathname
 
-                return (
-                  <li 
-                    className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
-                    key={link.route}
-                    >
-                    <Link className="sidebar-link cursor-pointer" href={link.route}>
-                      <Image 
-                        src={link.icon}
-                        alt="logo"
-                        width={24}
-                        height={24}
-                      />
-                      {link.label}
-                    </Link>
-                  </li>
-                )
-              })}
-              </ul>
+                    return (
+                      <li
+                        className={`${
+                          isActive && "gradient-text"
+                        } p-18 flex whitespace-nowrap text-dark-700`}
+                        key={link.route}
+                      >
+                        <Link
+                          className="sidebar-link cursor-pointer"
+                          href={link.route}
+                        >
+                          <Image
+                            src={link.icon}
+                            alt="logo"
+                            width={24}
+                            height={24}
+                          />
+                          {link.label}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
               </>
             </SheetContent>
           </Sheet>
         </SignedIn>
 
         <SignedOut>
-            <Button asChild className="button bg-purple-gradient bg-cover">
-              <Link href="/sign-in">Login</Link>
-            </Button>
-          </SignedOut>
+          <Button asChild className="button bg-purple-gradient bg-cover">
+            <Link href="/sign-in">Login</Link>
+          </Button>
+        </SignedOut>
       </nav>
     </header>
   )
